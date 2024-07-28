@@ -17,7 +17,7 @@
 </div>
 </div> 
 
-<div id="popcontainer">
+<!-- <div id="popcontainer">
   <div id="popupondenied">
     <div class="popupalerticon">
       <img src="../../../assets/alert-icon.png" alt="">
@@ -27,7 +27,7 @@
         when reload.</p>
     </div> 
   </div>
-</div>
+</div> -->
 
 <div id="content">
   <h2 #heading>Onboarding</h2>
@@ -164,16 +164,22 @@
       </div>
     </div>
   </div>
-  <div class="container-submit-btn" >
-  <button  class="submit-btn" (click)="onsubmit()">
-   Submit
-  </button> 
-</div>
-  <div *ngIf="flipview" id="background_black">
   </div>
+  <div class="container-submit-btn" >
+    <div class="response" id="Submitresponse">
+    </div>
+  </div>
+  <br>
+  <div class="container-submit-btn" >
+
+      <button  class="submit-btn" (click)="onsubmit()">Submit  </button> 
+  <!-- <div *ngIf="flipview" id="background_black">
+  </div> -->
+  <div id="overlay">
+  </div>
+
 </div>
-<div id="overlay">
-</div>
+
 
 <!-- Guide steps -->
 

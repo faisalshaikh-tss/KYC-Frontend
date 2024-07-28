@@ -6,7 +6,6 @@ import { error } from 'console';
 import { Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
@@ -42,7 +41,6 @@ export class FileUploadComponent implements OnInit {
     },100);  
   
   }
-
 
   handleImage(webcamImage: WebcamImage) {
     this.webcamImage = webcamImage;
@@ -147,16 +145,24 @@ export class FileUploadComponent implements OnInit {
     let resAdd = document.getElementById("AddressResponse") as HTMLDivElement;
     let resAdd2 = document.getElementById("AddressResponse2") as HTMLDivElement;
     let resPan = document.getElementById("Panresponse") as HTMLDivElement;
-    if(resAdd.style.color.toLocaleLowerCase() == "green" || resPan.style.color.toLocaleLowerCase() == "green")
+    let resSubmit = document.getElementById("Submitresponse") as HTMLDivElement;
+
+    if(resAdd.style != null && resAdd.style.color.toLocaleLowerCase() == "green" &&  resPan.style != null && resPan.style.color.toLocaleLowerCase() == "green"){
+      resSubmit.innerText = ""; 
       this.route.navigateByUrl("/success-page"); 
-    else
-    openAlertDialog();
+    }
+    else{
+      resSubmit.style.color = "red";
+      resSubmit.innerText = "Input could not be verified!"
+    }
+    
   }
 
   public backbutton(i: number) {
     this.flipview = false;
     this.toggleWebcam(i);
   }
+  
   
   public funcOnchange() { 
     document.getElementById("AddressResponse").innerHTML = "";
@@ -452,14 +458,14 @@ export class FileUploadComponent implements OnInit {
   // }
 
  async requestLocation(): Promise<void> {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        this.showPosition.bind(this),
-        this.showError.bind(this)
-      );
-    } else {
-      alert('Geolocation is not supported by this browser.');
-    }
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(
+    //     this.showPosition.bind(this),
+    //     this.showError.bind(this)
+    //   );
+    // } else {
+    //   alert('Geolocation is not supported by this browser.');
+    // }
   }
 
   showPosition(position: GeolocationPosition): void {
