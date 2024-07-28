@@ -1,0 +1,30 @@
+<div class="content">
+<div class="container">
+    <div class="banner">
+        <h1>Select Document</h1>
+    </div>
+    <select id="multiSelectDropdown" multiple >
+        <!-- <option value="D1">Pancard</option>
+        <option value="D2">AddressProof</option>
+        <option value="D3">Wet-Sign</option>
+        <option value="D4">Selfie</option> -->
+        <option value="D{{document.id}}" *ngFor="let document of allDocuments">
+            <div>{{document.poaDocumentname}}</div>
+        </option> 
+    </select>
+    
+
+    <table id="selectedOptionsTable">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Selected Document</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table> 
+    <button id="resetButton">Reset</button>
+    <button id="submitButton">Submit</button>
+</div> 
+</div>

@@ -1,0 +1,181 @@
+<div id="carouselcontenet">
+<div class="carousel-container">
+  <div class="carousel-slider" id="carouselSlider">
+      <div class="carousel-slide">
+          <img src="../../../assets/s1.jpg" alt="Image 1">
+      </div>
+      <div class="carousel-slide">
+          <img src="../../../assets/s2.jpg" alt="Image 2">
+      </div>
+  </div>
+  <div class="carousel-button-container">
+    <img class="carousel-buttons" id="previousButton" src="../../../assets/play.png" alt="Previous"> 
+     <img  id="okbutton" src="../../../assets/ok-button.png" alt="OK">
+    <img  class="carousel-buttons" id="nextButton" src="../../../assets/play.png" alt="Next">   
+    <img class="carousel-buttons" id="endButton" src="../../../assets/carousel-close-icon.png" alt="End">
+</div>
+</div>
+</div> 
+
+<div id="popcontainer">
+  <div id="popupondenied">
+    <div class="popupalerticon">
+      <img src="../../../assets/alert-icon.png" alt="">
+    </div>
+    <div id="popupondenied-content">
+      <p> You have blocked the location permission,Please go to site settings and reset permission or continue using alternate browser then allow permission
+        when reload.</p>
+    </div> 
+  </div>
+</div>
+
+<div id="content">
+  <h2 #heading>Onboarding</h2>
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <div class="popupalerticon">
+        <img src="../../../assets/Info-icon.png" alt="img">
+      </div>
+      <p>We need access to your location to provide services.Without it, you will be unable to move
+        further.</p>
+      <button id="allow-button">Allow</button>
+    </div>
+  </div>
+
+  <!-- All containers  -->
+  <div class="container" id="D0">
+    <div class="document-section">
+      <div class="document-title">Name</div>
+     <input [(ngModel)]="username" type="text" placeholder="Enter your full name">
+    </div>
+  </div>
+
+  <div class="container" id="D1" *ngIf="pancardcontainer">
+    <div class="document-section">
+      <div class="document-title">Pancard</div>
+      <button class="webcam-toggle-btn" (click)="toggleWebcam(1)">
+        {{ showWebcam1 ? 'Close Camera' : 'Capture' }}
+      </button>
+      <img *ngIf="webcamImage1" class="captured-image" [src]="webcamImage1?.imageAsDataUrl" alt="Captured Image">
+    </div>
+    <video *ngIf="showWebcam1" class="video-element" #videoElement></video>
+    <button *ngIf="showWebcam1" (click)="backbutton(1)"><img class="backbutton" src="../../../assets/close-icon.png"
+        alt=""></button>
+    <button (click)="toggleWebcam(1,true)" *ngIf="showWebcam1"><img class="flip-cam"
+        src="../../../assets/flip-camera.png"></button>
+    <button class="capture-btn" (click)="captureImage(1)" *ngIf="showWebcam1">
+      <div class="camera-icon"></div>
+    </button>
+    <div class="response" id="Panresponse">
+    </div>
+  </div>
+
+  <div class="container" id="D2" *ngIf="addressproofcontainer">
+    <div class="document-section">
+      <div class="document-title">Proof of Address</div>
+      <div>
+        <div class="upload-section">
+          <select (ngModelChange)="funcOnchange()" [(ngModel)]="selectedDocument" id="AddressProof"
+            class="document-type">
+            <option value="" disabled >Select Document</option>
+            <option value="AadharCard" >Aadharcard</option>
+            <option value="passport">Passport</option>
+            <option value="driverLicense">Driver's License</option>
+            <option value="VoteridCard">VoterID Card</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <div class="AddressProof" *ngIf="selectedDocument">
+          <div class="address">
+            <button class="webcam-toggle-btn" (click)="toggleWebcam(2)">
+              {{ showWebcam2 ? 'Close Camera' : 'Capture Frontside' }}
+            </button>
+            <video *ngIf="showWebcam2" class="video-element" #videoElement></video>
+            <button *ngIf="showWebcam2" (click)="backbutton(2)"><img class="backbutton"
+                src="../../../assets/close-icon.png" alt=""></button>
+            <button (click)="toggleWebcam(2,true)" *ngIf="showWebcam2"><img class="flip-cam"
+                src="../../../assets/flip-camera.png"></button>
+            <button class="capture-btn" (click)="captureImage(2)" *ngIf="showWebcam2">
+              <div class="camera-icon"></div>
+            </button>
+            <img *ngIf="webcamImage2" class="captured-image" [src]="webcamImage2?.imageAsDataUrl" alt="Captured Image">
+            <div class="response" id="AddressResponse"></div>
+          </div>
+          <div class="address">
+            <button class="webcam-toggle-btn" (click)="toggleWebcam(5)">
+              {{ showWebcam2 ? 'Close Camera' : 'Capture Backside' }}
+            </button>
+            <video *ngIf="showWebcam5" class="video-element" #videoElement></video>
+            <button *ngIf="showWebcam5" (click)="backbutton(5)"><img class="backbutton"
+                src="../../../assets/close-icon.png" alt=""></button>
+            <button (click)="toggleWebcam(5,true)" *ngIf="showWebcam5"><img class="flip-cam"
+                src="../../../assets/flip-camera.png"></button>
+            <button class="capture-btn" (click)="captureImage(5)" *ngIf="showWebcam5">
+              <div class="camera-icon"></div>
+            </button>
+            <img *ngIf="webcamImage5" class="captured-image" [src]="webcamImage5?.imageAsDataUrl" alt="Captured Image">
+            <div class="response" id="AddressResponse2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="D3" *ngIf="wetsigncontainer">
+    <div class="document-section">
+      <div class="document-title">Wet Signature</div>
+      <div>
+        <button class="webcam-toggle-btn" (click)="toggleWebcam(3)">
+          {{ showWebcam3 ? 'Close Camera' : 'Capture' }}
+        </button>
+         <video *ngIf="showWebcam3" class="video-element" #videoElement></video>
+        <button *ngIf="showWebcam3" (click)="backbutton(3)"><img class="backbutton" src="../../../assets/close-icon.png"
+            alt=""></button>
+        <button (click)="toggleWebcam(3,true)" *ngIf="showWebcam3"><img class="flip-cam"
+            src="../../../assets/flip-camera.png"></button>
+        <button class="capture-btn" (click)="captureImage(3)" *ngIf="showWebcam3">
+          <div class="camera-icon"></div>
+        </button>
+        <div *ngIf="webcamImage3">
+          <img class="captured-image" [src]="webcamImage3?.imageAsDataUrl" alt="Captured Image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="D4" *ngIf="selfiecontainer">
+    <div class="document-section">
+      <div class="document-title">Selfie</div>
+      <div>
+        <button class="webcam-toggle-btn" (click)="toggleWebcam(4)">
+          {{ showWebcam4 ? 'Close Camera' : 'Capture' }}
+        </button>
+        <video *ngIf="showWebcam4" class="video-element" #videoElement></video>
+        <button *ngIf="showWebcam4" (click)="backbutton(4)"><img class="backbutton" src="../../../assets/close-icon.png"
+            alt=""></button>
+        <button class="capture-btn" (click)="captureImage(4)" *ngIf="showWebcam4">
+          <div class="camera-icon"></div>
+        </button>
+        <button (click)="toggleWebcam(4,true)" *ngIf="showWebcam4"><img class="flip-cam"
+            src="../../../assets/flip-camera.png"></button>
+        <div *ngIf="webcamImage4">
+          <img class="captured-image" [src]="webcamImage4?.imageAsDataUrl" alt="Captured Image">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-submit-btn" >
+  <button  class="submit-btn" (click)="onsubmit()">
+   Submit
+  </button> 
+</div>
+  <div *ngIf="flipview" id="background_black">
+  </div>
+</div>
+<div id="overlay">
+</div>
+
+<!-- Guide steps -->
+
+<!-- try -->
+<!-- <div id="displaycontainers"></div> -->

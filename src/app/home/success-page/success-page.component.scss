@@ -1,0 +1,52 @@
+#pagecontainer{
+    height: 100vh; 
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(217, 233, 236);
+    margin-bottom: 30px;
+}
+  
+  #popuppage {
+    justify-content: center; ;
+    max-width: 500px;
+    margin: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1001;
+    text-align: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 0px 12px #5f6770;
+    margin-bottom: 40px;
+    position: relative; 
+    bottom: 6%;
+  }
+  
+  #popuppage-content{
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 20px;
+    
+  }
+  
+  
+  #popuppage p{
+    letter-spacing: 1px;
+    font-size: 20px;
+  }
+
+  .pageicon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0px;
+  }
+  
+  .pageicon img{
+    width: 50px;
+    margin: 20px 0px;
+  } 
